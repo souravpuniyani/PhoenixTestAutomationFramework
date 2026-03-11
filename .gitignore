@@ -1,1 +1,33 @@
+# Maven
 /target/
+
+# Eclipse
+.classpath
+.project
+.settings/
+
+# IntelliJ
+.idea/
+*.iml
+out/
+
+# Compiled class files
+*.class
+
+# Logs
+logs/
+*.log
+
+# Test and reports
+test-output/
+
+# Package files
+*.jar
+*.war
+*.ear
+
+# OS files
+.DS_Store
+
+# Maven wrapper (keep jar if needed)
+!.mvn/wrapper/maven-wrapper.jar
