@@ -1,0 +1,30 @@
+{
+  
+  "type": "object",
+  "required": ["message", "data"],
+  "properties": {
+    "message": {
+      "type": "string"
+    },
+    "data": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["label", "key", "count"],
+        "properties": {
+          "label": {
+            "type": "string"
+          },
+          "key": {
+            "type": "string"
+          },
+          "count": {
+            "type": "integer"
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}

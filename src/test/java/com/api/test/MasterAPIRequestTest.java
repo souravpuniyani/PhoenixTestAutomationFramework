@@ -1,0 +1,57 @@
+package com.api.test;
+
+import org.hamcrest.Matchers;
+import org.testng.annotations.Test;
+
+import com.api.constant.Role;
+import com.api.utils.AuthTokenProvider;
+import com.api.utils.ConfigManager;
+
+import io.restassured.RestAssured;
+import io.restassured.http.ContentType;
+import io.restassured.module.jsv.JsonSchemaValidator;
+
+public class MasterAPIRequestTest {
+	
+	
+	@Test
+	public void masterAPITest() {
+		
+		RestAssured.given()
+		.baseUri(ConfigManager.getPropertyFromFile("BASE_URI"))
+		.header("Authorization",AuthTokenProvider.getToken(Role.FD))
+		.contentType("")
+		.when().post("master")
+		.then().log().all()
+		.statusCode(200)
+		.time(Matchers.lessThan(1000L))
+		.body("$", Matchers.hasKey("message"))  //bigger json has key message
+		.body("$",Matchers.hasKey("data"))
+		.body("message", Matchers.equalTo("Success"))
+		.body("data", Matchers.notNullValue())
+		.body("data",Matchers.hasKey("mst_oem"))  //jkey value match for json array
+		.body("data",Matchers.hasKey("mst_model"))
+		.body("data.mst_oem.size()", Matchers.greaterThanOrEqualTo(2))  //size of json array
+		.body("data.mst_model.size()",Matchers.greaterThanOrEqualTo(0))
+		
+		.body("data.mst_oem.id", Matchers.everyItem(Matchers.notNullValue()))  // check for all ids
+		.body("data.mst_oem.name", Matchers.everyItem(Matchers.notNullValue()))  // check for all name 
+
+		.body(JsonSchemaValidator.matchesJsonSchemaInClasspath("response-schema/MasterAPIResponse.json"));
+	}
+	
+	
+	@Test
+	public void invalidTokenForMasterAPITest() {
+
+		RestAssured.given()
+		.baseUri(ConfigManager.getPropertyFromFile("BASE_URI"))
+		
+		.contentType("")
+		.when().post("master")
+		.then().log().all()
+		.statusCode(401)
+		.time(Matchers.lessThan(1000L));
+	}
+
+}

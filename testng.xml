@@ -1,0 +1,11 @@
+<suite name="Phoenix API Test Suite" verbose="1">
+  
+  <test name="Inwarrenty Flow Test">
+    <classes>
+      <class name="com.api.test.LoginAPITest"/>
+      <class name="com.api.test.UserDetailsAPITest"/>
+      <class name="com.api.test.CountAPITest"/>
+      <class name="com.api.test.MasterAPIRequestTest"/>
+    </classes>
+  </test>
+</suite>
