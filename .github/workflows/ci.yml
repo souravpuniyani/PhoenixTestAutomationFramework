@@ -4,17 +4,23 @@ name: Phoenix Test Automation Workflow
 
 on:
   push:
-    branches: [ "master" ]
+    branches: ["master"]
+
   pull_request:
-    branches: [ "master" ]
-  schedule: #set CRON for midnight IST
-    - cron: "30 18 * * *"
+    branches: ["master"]
+
+  schedule:
+    - cron: "30 18 * * *"   # midnight IST
+
   workflow_dispatch:
     inputs:
-       env:
-        description: "Environment
+      env:
+        description: "Environment"
         type: choice
-        options: [qa,uat,dev]
+        options:
+          - qa
+          - uat
+          - dev
         default: qa
         required: true
 
