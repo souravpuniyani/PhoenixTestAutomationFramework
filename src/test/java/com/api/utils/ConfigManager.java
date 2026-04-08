@@ -14,9 +14,8 @@ public class ConfigManager {
 	static {	
 		
 	
-		env = System.getProperty("env","qa");  // it will return string 
+		env = System.getProperty("env","qa");  // it will return string -- get property from terminal
 		env=env.toLowerCase().trim();   	// select the environment to run 
-
 		
 		
 		switch(env) {   // using -> operator it will automatically take care of break .. it is part of java 14
@@ -28,8 +27,7 @@ public class ConfigManager {
 		
 		}
 		
-		
-		
+				
 		
 		InputStream input= Thread.currentThread().getContextClassLoader().getResourceAsStream(path);
 		
