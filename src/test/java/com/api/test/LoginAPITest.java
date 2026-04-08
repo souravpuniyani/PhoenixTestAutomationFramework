@@ -9,9 +9,9 @@ import java.io.IOException;
 import org.testng.annotations.Test;
 
 import com.api.pojo.UserCredentials;
-import static com.api.utils.ConfigManager.*;
+import com.api.utils.SpecUtil;
 
-import io.restassured.http.ContentType;
+
 import io.restassured.module.jsv.JsonSchemaValidator;
 
 public class LoginAPITest {
@@ -25,24 +25,15 @@ public class LoginAPITest {
 		
 		given()
 		.and()
-		.baseUri(getPropertyFromFile("BASE_URI"))  
-		.and()
-		.contentType(ContentType.JSON)
-		.accept(ContentType.ANY)
-		.and()
-		.body(userCredentials)
-		.log().body()
-		.log().headers()
-		.log().uri()
-		.log().method()
+		.spec(SpecUtil.requestSpec(userCredentials))
 		
 		.when()
 		.post("/login")
 		
 		.then()
-		.log().all()
-		.statusCode(200)
-		.time(lessThan(2000L))
+		
+		.spec(SpecUtil.responseSpec_ok())
+		
 		.body("message", equalTo("Success"))
 		.body(JsonSchemaValidator.matchesJsonSchemaInClasspath("response-schema/LoginResponseScgema.json"));
 		

@@ -6,9 +6,9 @@ import org.testng.annotations.Test;
 import com.api.constant.Role;
 import com.api.utils.AuthTokenProvider;
 import com.api.utils.ConfigManager;
+import com.api.utils.SpecUtil;
 
 import io.restassured.RestAssured;
-import io.restassured.http.ContentType;
 import io.restassured.module.jsv.JsonSchemaValidator;
 
 public class MasterAPIRequestTest {
@@ -18,13 +18,14 @@ public class MasterAPIRequestTest {
 	public void masterAPITest() {
 		
 		RestAssured.given()
-		.baseUri(ConfigManager.getPropertyFromFile("BASE_URI"))
-		.header("Authorization",AuthTokenProvider.getToken(Role.FD))
-		.contentType("")
-		.when().post("master")
-		.then().log().all()
-		.statusCode(200)
-		.time(Matchers.lessThan(1000L))
+		.spec(SpecUtil.requestSpecAuth(Role.FD))
+		
+		.when()
+		.post("master")
+		
+		.then()
+		.spec(SpecUtil.responseSpec_ok())
+		
 		.body("$", Matchers.hasKey("message"))  //bigger json has key message
 		.body("$",Matchers.hasKey("data"))
 		.body("message", Matchers.equalTo("Success"))
@@ -45,13 +46,11 @@ public class MasterAPIRequestTest {
 	public void invalidTokenForMasterAPITest() {
 
 		RestAssured.given()
-		.baseUri(ConfigManager.getPropertyFromFile("BASE_URI"))
+		.spec(SpecUtil.requestSpec())
 		
-		.contentType("")
 		.when().post("master")
-		.then().log().all()
-		.statusCode(401)
-		.time(Matchers.lessThan(1000L));
+		.then()
+		.spec(SpecUtil.responseSpec_text(401));
 	}
 
 }
