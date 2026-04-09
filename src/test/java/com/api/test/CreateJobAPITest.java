@@ -1,9 +1,9 @@
 package com.api.test;
 
 import org.hamcrest.Matchers;
+import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import java.util.*;
-
 import com.api.constant.Model;
 import com.api.constant.OEM;
 import com.api.constant.Platform;
@@ -26,8 +26,12 @@ import io.restassured.module.jsv.JsonSchemaValidator;
 public class CreateJobAPITest {
 
 	
-	@Test
-	public void createJobAPITest() {
+	private CreateJobPayload createJobPayload;
+	
+	
+	
+	@BeforeTest(description="Creating CreateJobApi Payload")
+	public void setup() {
 		
 		Customer customer = new Customer("Sourav","S","7206819755","","sourav@gmail.com","");
 		CustomerAddress customer_address = new CustomerAddress("7594", "Nadi Mohalla", "Ambala", "Shukulkund Road", "Amabala", "134003", "India", "Haryana");
@@ -40,9 +44,17 @@ public class CreateJobAPITest {
 		List<Problems> problemList= new ArrayList<>();
 		problemList.add(problems);
 		
-		CreateJobPayload createJobPayload = new CreateJobPayload(ServiceLocation.SERVICE_LOCATION_A.getCode(), 
+		 createJobPayload = new CreateJobPayload(ServiceLocation.SERVICE_LOCATION_A.getCode(), 
 				Platform.FRONTDESK.getCode(), WarrentyStatus.IN_WARRENTY.getCode(), OEM.GOOGLE.getCode(), customer, customer_address, customer_product, problemList);
 		
+	}
+
+	
+	
+	
+	
+	@Test(description="Verify Create job api is succssfully creating the job", groups= {"sanity","smoke","regression"})
+	public void createJobAPITest() {
 		
 		
 		String jobnumber= RestAssured.given()

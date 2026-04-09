@@ -2,16 +2,29 @@
 <testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2026-04-09T22:28:06 IST" name="Default suite" finished-at="2026-04-09T22:28:08 IST" duration-ms="1045">
+  <suite started-at="2026-04-09T22:48:40 IST" name="Default suite" finished-at="2026-04-09T22:48:41 IST" duration-ms="913">
     <groups>
+      <group name="regression">
+        <method signature="LoginAPITest.loginAPIRequest()[pri:0, instance:com.api.test.LoginAPITest@7e07db1f]" name="loginAPIRequest" class="com.api.test.LoginAPITest"/>
+      </group> <!-- regression -->
+      <group name="smoke">
+        <method signature="LoginAPITest.loginAPIRequest()[pri:0, instance:com.api.test.LoginAPITest@7e07db1f]" name="loginAPIRequest" class="com.api.test.LoginAPITest"/>
+      </group> <!-- smoke -->
+      <group name="sanity">
+        <method signature="LoginAPITest.loginAPIRequest()[pri:0, instance:com.api.test.LoginAPITest@7e07db1f]" name="loginAPIRequest" class="com.api.test.LoginAPITest"/>
+      </group> <!-- sanity -->
     </groups>
-    <test started-at="2026-04-09T22:28:06 IST" name="Default test" finished-at="2026-04-09T22:28:08 IST" duration-ms="1045">
-      <class name="com.api.test.CreateJobAPITest">
-        <test-method signature="createJobAPITest()[pri:0, instance:com.api.test.CreateJobAPITest@16293aa2]" started-at="2026-04-09T22:28:06 IST" name="createJobAPITest" finished-at="2026-04-09T22:28:08 IST" duration-ms="1029" status="PASS">
+    <test started-at="2026-04-09T22:48:40 IST" name="Default test" finished-at="2026-04-09T22:48:41 IST" duration-ms="913">
+      <class name="com.api.test.LoginAPITest">
+        <test-method is-config="true" signature="setup()[pri:0, instance:com.api.test.LoginAPITest@7e07db1f]" started-at="2026-04-09T22:48:40 IST" name="setup" description="Create the payload for LoginAPIRequest" finished-at="2026-04-09T22:48:40 IST" duration-ms="3" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- createJobAPITest -->
-      </class> <!-- com.api.test.CreateJobAPITest -->
+        </test-method> <!-- setup -->
+        <test-method signature="loginAPIRequest()[pri:0, instance:com.api.test.LoginAPITest@7e07db1f]" started-at="2026-04-09T22:48:40 IST" name="loginAPIRequest" description="Verify loginAPI is working for iamfd user" finished-at="2026-04-09T22:48:41 IST" duration-ms="894" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- loginAPIRequest -->
+      </class> <!-- com.api.test.LoginAPITest -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

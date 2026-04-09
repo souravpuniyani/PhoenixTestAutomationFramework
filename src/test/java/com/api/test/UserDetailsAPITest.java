@@ -10,7 +10,7 @@ import java.io.IOException;
 public class UserDetailsAPITest {
 	
 	
-	@Test
+	@Test(description="Verify user detail api is working fine",groups= {"sanity","smoke","regression"})
 	public void userDetailsAPITest() throws IOException {
 		
 		
