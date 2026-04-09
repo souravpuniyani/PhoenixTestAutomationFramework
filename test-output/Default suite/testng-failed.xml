@@ -3,11 +3,11 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="com.api.test.MasterAPIRequestTest">
+      <class name="com.api.test.CreateJobAPITest">
         <methods>
-          <include name="invalidTokenForMasterAPITest"/>
+          <include name="createJobAPITest"/>
         </methods>
-      </class> <!-- com.api.test.MasterAPIRequestTest -->
+      </class> <!-- com.api.test.CreateJobAPITest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
