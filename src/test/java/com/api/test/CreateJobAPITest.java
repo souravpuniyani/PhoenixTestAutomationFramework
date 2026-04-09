@@ -3,12 +3,21 @@ package com.api.test;
 import org.hamcrest.Matchers;
 import org.testng.annotations.Test;
 import java.util.*;
+
+import com.api.constant.Model;
+import com.api.constant.OEM;
+import com.api.constant.Platform;
+import com.api.constant.Problem;
+import com.api.constant.Product;
 import com.api.constant.Role;
+import com.api.constant.ServiceLocation;
+import com.api.constant.WarrentyStatus;
 import com.api.pojo.CreateJobPayload;
 import com.api.pojo.Customer;
 import com.api.pojo.CustomerAddress;
 import com.api.pojo.CustomerProduct;
 import com.api.pojo.Problems;
+import com.api.utils.DateTimeUtility;
 import com.api.utils.SpecUtil;
 
 import io.restassured.RestAssured;
@@ -22,12 +31,19 @@ public class CreateJobAPITest {
 		
 		Customer customer = new Customer("Sourav","S","7206819755","","sourav@gmail.com","");
 		CustomerAddress customer_address = new CustomerAddress("7594", "Nadi Mohalla", "Ambala", "Shukulkund Road", "Amabala", "134003", "India", "Haryana");
-		CustomerProduct customer_product = new CustomerProduct("2025-04-06T18:30:00.000Z", "71906060886103", "71906060886103", "71906060886103", "2025-04-06T18:30:00.000Z", 1, 1);
-		Problems problems = new Problems(1,"Battery Issue");
+		CustomerProduct customer_product = new CustomerProduct(DateTimeUtility.getTimeWithDaysAgo(10), "51906060886105", 
+				"51906060886105", "51906060886105", 
+				DateTimeUtility.getTimeWithDaysAgo(10), Product.NEXUS_2.getCode(), Model.NEXUS_2_BLUE.getCode());
+		
+		
+		Problems problems = new Problems(Problem.SMARTPHONE_IS_RUNNING_SLOW.getCode(),"Battery Issue");
 		List<Problems> problemList= new ArrayList<>();
 		problemList.add(problems);
 		
-		CreateJobPayload createJobPayload = new CreateJobPayload(0, 2, 1, 1, customer, customer_address, customer_product, problemList);
+		CreateJobPayload createJobPayload = new CreateJobPayload(ServiceLocation.SERVICE_LOCATION_A.getCode(), 
+				Platform.FRONTDESK.getCode(), WarrentyStatus.IN_WARRENTY.getCode(), OEM.GOOGLE.getCode(), customer, customer_address, customer_product, problemList);
+		
+		
 		
 		String jobnumber= RestAssured.given()
 		.given()
