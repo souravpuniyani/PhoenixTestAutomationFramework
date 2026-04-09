@@ -1,17 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="1" total="2" passed="1" failed="0" skipped="0">
+<testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2026-04-09T00:11:26 IST" name="Default suite" finished-at="2026-04-09T00:11:27 IST" duration-ms="987">
+  <suite started-at="2026-04-09T22:48:40 IST" name="Default suite" finished-at="2026-04-09T22:48:41 IST" duration-ms="913">
     <groups>
+      <group name="regression">
+        <method signature="LoginAPITest.loginAPIRequest()[pri:0, instance:com.api.test.LoginAPITest@7e07db1f]" name="loginAPIRequest" class="com.api.test.LoginAPITest"/>
+      </group> <!-- regression -->
+      <group name="smoke">
+        <method signature="LoginAPITest.loginAPIRequest()[pri:0, instance:com.api.test.LoginAPITest@7e07db1f]" name="loginAPIRequest" class="com.api.test.LoginAPITest"/>
+      </group> <!-- smoke -->
+      <group name="sanity">
+        <method signature="LoginAPITest.loginAPIRequest()[pri:0, instance:com.api.test.LoginAPITest@7e07db1f]" name="loginAPIRequest" class="com.api.test.LoginAPITest"/>
+      </group> <!-- sanity -->
     </groups>
-    <test started-at="2026-04-09T00:11:26 IST" name="Default test" finished-at="2026-04-09T00:11:27 IST" duration-ms="987">
-      <class name="com.api.test.MasterAPIRequestTest">
-        <test-method signature="invalidTokenForMasterAPITest()[pri:0, instance:com.api.test.MasterAPIRequestTest@5158b42f]" started-at="2026-04-09T00:11:26 IST" name="invalidTokenForMasterAPITest" finished-at="2026-04-09T00:11:27 IST" duration-ms="978" status="PASS">
+    <test started-at="2026-04-09T22:48:40 IST" name="Default test" finished-at="2026-04-09T22:48:41 IST" duration-ms="913">
+      <class name="com.api.test.LoginAPITest">
+        <test-method is-config="true" signature="setup()[pri:0, instance:com.api.test.LoginAPITest@7e07db1f]" started-at="2026-04-09T22:48:40 IST" name="setup" description="Create the payload for LoginAPIRequest" finished-at="2026-04-09T22:48:40 IST" duration-ms="3" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- invalidTokenForMasterAPITest -->
-      </class> <!-- com.api.test.MasterAPIRequestTest -->
+        </test-method> <!-- setup -->
+        <test-method signature="loginAPIRequest()[pri:0, instance:com.api.test.LoginAPITest@7e07db1f]" started-at="2026-04-09T22:48:40 IST" name="loginAPIRequest" description="Verify loginAPI is working for iamfd user" finished-at="2026-04-09T22:48:41 IST" duration-ms="894" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- loginAPIRequest -->
+      </class> <!-- com.api.test.LoginAPITest -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

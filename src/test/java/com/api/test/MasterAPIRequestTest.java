@@ -4,8 +4,7 @@ import org.hamcrest.Matchers;
 import org.testng.annotations.Test;
 
 import com.api.constant.Role;
-import com.api.utils.AuthTokenProvider;
-import com.api.utils.ConfigManager;
+
 import com.api.utils.SpecUtil;
 
 import io.restassured.RestAssured;
@@ -14,7 +13,7 @@ import io.restassured.module.jsv.JsonSchemaValidator;
 public class MasterAPIRequestTest {
 	
 	
-	@Test
+	@Test(description="Verify Master api is working fine", groups= {"sanity","smoke","regression"})
 	public void masterAPITest() {
 		
 		RestAssured.given()
@@ -42,7 +41,7 @@ public class MasterAPIRequestTest {
 	}
 	
 	
-	@Test
+	@Test(description="Verify status code for master api when token is missing", groups= {"negative"})
 	public void invalidTokenForMasterAPITest() {
 
 		RestAssured.given()

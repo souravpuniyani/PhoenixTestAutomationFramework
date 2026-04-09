@@ -14,7 +14,7 @@ public class CountAPITest {
 	
 	
 	
-	@Test
+	@Test(description="Verify count api is working fine", groups= {"regression","smoke","sanity"})
 	public void verifyCountAPIResponse() {
 		
 		
@@ -37,7 +37,7 @@ public class CountAPITest {
 	}
 	
 	
-	@Test
+	@Test(description="Verify status code for count api when token is missing", groups= {"negative"})
 	public void CountAPITest_MissingAuthToken() {
 		given()
 		.spec(SpecUtil.requestSpec())

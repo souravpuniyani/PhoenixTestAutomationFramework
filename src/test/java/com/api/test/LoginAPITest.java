@@ -6,6 +6,7 @@ import static org.hamcrest.Matchers.*;
 
 import java.io.IOException;
 
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import com.api.pojo.UserCredentials;
@@ -17,12 +18,18 @@ import io.restassured.module.jsv.JsonSchemaValidator;
 public class LoginAPITest {
 	
 	
+	private UserCredentials userCredentials;
 	
-	@Test
+	@BeforeMethod(description="Create the payload for LoginAPIRequest")
+	public void setup() {
+		 userCredentials = new UserCredentials("iamfd","password"); //POJO Object
+	}
+	
+
+	
+	@Test(description ="Verify loginAPI is working for iamfd user", groups= {"regression", "smoke", "sanity"})
 	public void loginAPIRequest() throws IOException {
-		
-		UserCredentials userCredentials = new UserCredentials("iamfd","password"); //POJO Object
-		
+				
 		given()
 		.and()
 		.spec(SpecUtil.requestSpec(userCredentials))
